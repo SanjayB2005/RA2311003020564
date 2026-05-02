@@ -1,7 +1,7 @@
 {
   "name": "vehicle-maintence-scheduler",
   "version": "1.0.0",
-  "description": "Vehicle Maintenance Scheduler Microservice - Affordmed Backend Evaluation",
+  "description": "Vehicle Maintenance Scheduler Microservice ",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",

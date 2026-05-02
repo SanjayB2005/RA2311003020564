@@ -1,11 +1,4 @@
-/**
- * app.js — Entry point for Vehicle Maintenance Scheduler Microservice
- *
- * Affordmed Campus Hiring Evaluation — Backend Track
- *
- * Sets up Express app, applies logging middleware, mounts routes.
- * No authentication is required on this app (users are pre-authorised).
- */
+
 
 const express = require("express");
 const config = require("./config/env");

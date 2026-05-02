@@ -1,9 +1,4 @@
-/**
- * apiService.js
- *
- * Handles all outbound HTTP calls to the Affordmed Evaluation Server.
- * Uses Client ID and Client Secret for authentication on protected routes.
- */
+
 
 const axios = require("axios");
 const config = require("../config/env");
@@ -50,11 +45,7 @@ async function getBearerToken() {
   return cachedToken;
 }
 
-/**
- * Builds the Authorization header.
- * Uses HTTP Bearer token since that's what Affordmed expects using Client credentials or Access code logic
- * Actually, per standard Affordmed evaluation: Basic Auth with Client ID & Secret or Bearer Token.
- */
+
 async function getAuthHeaders() {
   const token = await getBearerToken();
   return {
