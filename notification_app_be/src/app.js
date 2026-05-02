@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
 const cors = require('cors');
+const config = require('./config');
 
 // Database Sync
 const { sequelize } = require('./db');
@@ -82,7 +83,7 @@ app.get('/health', (req, res) => {
     res.status(200).json({ status: 'Notification App running' });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = config.port;
 
 server.listen(PORT, () => {
     console.log(`Notification Service running on port ${PORT}`);

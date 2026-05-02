@@ -2,16 +2,48 @@ const express = require('express');
 const { Op } = require('sequelize');
 const { Notification } = require('../db');
 const NodeCache = require('node-cache');
+const { fetchEvaluationNotifications } = require('../services/evaluationApi');
+const { rankNotifications } = require('../services/priorityService');
 
 const router = express.Router();
 const myCache = new NodeCache({ stdTTL: 10, checkperiod: 12 });
 
+async function getEvaluationTopNotifications(req, res) {
+    try {
+        const limit = parseInt(req.query.limit, 10) || 10;
+        const notifications = await fetchEvaluationNotifications();
+        const topNotifications = rankNotifications(notifications, limit);
+
+        res.json({
+            success: true,
+            totalFetched: notifications.length,
+            returned: topNotifications.length,
+            notifications: topNotifications
+        });
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+}
+
 /**
  * GET /notifications
+ * Main evaluation route: fetches protected evaluation-server notifications
+ * and returns top 10 using type priority first, then recency.
+ */
+router.get('/', getEvaluationTopNotifications);
+
+/**
+ * GET /notifications/evaluation/top
+ * Explicit alias for the main evaluation route.
+ */
+router.get('/evaluation/top', getEvaluationTopNotifications);
+
+/**
+ * GET /notifications/local
  * Stage 4: Pagination Implementation
  * Stage 4: Database load reduction techniques -> node-cache
  */
-router.get('/', async (req, res) => {
+router.get('/local', async (req, res) => {
     try {
         const page = parseInt(req.query.page) || 1;
         const limit = parseInt(req.query.limit) || 10;
