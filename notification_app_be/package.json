@@ -1,0 +1,23 @@
+{
+  "name": "notification_app_be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "amqplib": "^1.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "node-cache": "^5.1.2",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1",
+    "ws": "^8.20.0"
+  }
+}

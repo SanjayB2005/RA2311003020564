@@ -1,0 +1,18 @@
+{
+  "name": "vehicle-maintence-scheduler",
+  "version": "1.0.0",
+  "description": "Vehicle Maintenance Scheduler Microservice - Affordmed Backend Evaluation",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
